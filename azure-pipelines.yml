@@ -19,14 +19,6 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
 
-- task: AndroidSigning@3
-  inputs:
-    apkFiles: '**/*.apk'
-    apksignerKeystoreFile: '$(Build.SourcesDirectory)/keystore.jks'
-    apksignerKeystorePassword: '$(PASSWORD_KEY)'
-    apksignerKeystoreAlias: 'karlosarr'
-    apksignerKeyPassword: '$(PASSWORD_KEY)'
-
 - task: AppCenterDistribute@3
   inputs:
     serverEndpoint: 'App Center'
