@@ -16,6 +16,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import com.microsoft.appcenter.distribute.Distribute
+import com.microsoft.appcenter.distribute.UpdateTrack
 
 
 class MainActivity : AppCompatActivity() {
@@ -44,8 +46,11 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         AppCenter.start(
             application, "e67945b4-c268-4567-ad28-8c7c8a30be60",
-            Analytics::class.java, Crashes::class.java
+            Analytics::class.java, Crashes::class.java, Distribute::class.java
         )
+        Analytics.trackEvent("Inicio");
+        Distribute.setUpdateTrack(UpdateTrack.PRIVATE);
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -55,6 +60,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        Analytics.trackEvent("Soporte");
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
