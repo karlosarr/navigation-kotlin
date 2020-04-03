@@ -37,7 +37,7 @@ steps:
   inputs:
     serverEndpoint: 'App Center'
     appSlug: 'karlosarr/navigation-kotlin'
-    appFile: 'APK'
+    appFile: '**/*.apk'
     symbolsOption: 'Android'
     releaseNotesOption: 'input'
     releaseNotesInput: 'test'
