@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             Analytics::class.java, Crashes::class.java, Distribute::class.java
         )
         Analytics.trackEvent("Inicio");
-        //Distribute.setUpdateTrack(UpdateTrack.PRIVATE);
+        Distribute.setUpdateTrack(UpdateTrack.PRIVATE);
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
