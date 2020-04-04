@@ -2,6 +2,7 @@ package com.karlosarr.navigation
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -29,7 +30,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        val textViewVersion: TextView = findViewById(R.id.textViewVersion) as TextView
 
+        textViewVersion.text = BuildConfig.VERSION_CODE.toString()
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -44,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        Distribute.setListener(MyDistributeListener())
         AppCenter.start(
             application, "e67945b4-c268-4567-ad28-8c7c8a30be60",
             Analytics::class.java, Crashes::class.java, Distribute::class.java
