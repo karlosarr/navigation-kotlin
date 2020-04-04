@@ -1,8 +1,8 @@
 package com.karlosarr.navigation
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -24,6 +24,7 @@ import com.microsoft.appcenter.distribute.UpdateTrack
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    var sSharedPreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +48,8 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        /* Set debug enabled for distribute. */
+        setDistributeEnabledForDebuggableBuild()
         Distribute.setListener(MyDistributeListener())
         AppCenter.start(
             application, "e67945b4-c268-4567-ad28-8c7c8a30be60",
@@ -66,5 +69,13 @@ class MainActivity : AppCompatActivity() {
         Analytics.trackEvent("Soporte");
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun setDistributeEnabledForDebuggableBuild() {
+        /*val enabledForDebuggableBuild = sSharedPreferences!!.getBoolean(
+            "appcenter_distribute_debug_state_key",
+            true
+        )*/
+        Distribute.setEnabledForDebuggableBuild(true)
     }
 }
