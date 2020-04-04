@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         /* Set debug enabled for distribute. */
         setDistributeEnabledForDebuggableBuild()
-        Distribute.setListener(MyDistributeListener())
+        //Distribute.setListener(MyDistributeListener())
         AppCenter.start(
             application, "e67945b4-c268-4567-ad28-8c7c8a30be60",
             Analytics::class.java, Crashes::class.java, Distribute::class.java
