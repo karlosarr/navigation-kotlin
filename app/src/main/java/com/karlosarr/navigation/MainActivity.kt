@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        val textViewVersion: TextView = findViewById(R.id.textViewVersion) as TextView
-
-        textViewVersion.text = BuildConfig.VERSION_CODE.toString()
+        //val textViewVersion: TextView = findViewById(R.id.textViewVersion) as TextVie
+        //BuildConfig.VERSION_NAME
+        //textViewVersion.text = BuildConfig.VERSION_NAME
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         )
         Analytics.trackEvent("Inicio");
         Distribute.setUpdateTrack(UpdateTrack.PRIVATE);
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

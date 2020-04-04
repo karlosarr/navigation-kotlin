@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.karlosarr.navigation.BuildConfig
 import com.karlosarr.navigation.R
 
 class HomeFragment : Fragment() {
@@ -24,7 +25,8 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            //textView.text = it
+            textView.text = BuildConfig.VERSION_NAME
         })
         return root
     }
