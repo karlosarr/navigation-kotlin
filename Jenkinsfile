@@ -6,7 +6,7 @@ pipeline {
         stage('preparing docker') {
             agent {
                 docker { 
-                    image 'gradle:6.3.0-jdk8'
+                    image 'circleci/android:api-29-node'
                     args '--entrypoint=\'\' -v ${PWD}:/usr/src/app -w /usr/src/app'
                     reuseNode true
                 }
