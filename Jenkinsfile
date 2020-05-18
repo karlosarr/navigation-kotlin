@@ -16,7 +16,9 @@ pipeline {
                     steps {
                         script {
                             sh './gradlew assembleDebug'
+                            archiveArtifacts artifacts: '**/*.apk', onlyIfSuccessful: true
                         }
+                        
                     }
                 }
                 // stage ('Analyzing with SonarQube') {
