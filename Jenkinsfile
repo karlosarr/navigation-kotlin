@@ -21,6 +21,18 @@ pipeline {
                         
                     }
                 }
+                stage('Publish') {
+                    environment {
+                        APPCENTER_API_TOKEN = credentials('APPCENTER_API_TOKEN')
+                    }
+                    steps {
+                        appCenter apiToken: APPCENTER_API_TOKEN,
+                                ownerName: 'karlosarr',
+                                appName: 'navigation-kotlin',
+                                pathToApp: '**/*.apk',
+                                distributionGroups: 'Collaborators'
+                    }
+                }
                 // stage ('Analyzing with SonarQube') {
                 //     steps {
                 //         sh 'mvn -DskipITs --settings ./maven/settings.xml sonar:sonar'
